@@ -1,4 +1,4 @@
-const puppeteer = require('puppeteer')
+const puppeteer = require('puppeteer-core')
 
 
 module.exports = function (RED) {
@@ -11,7 +11,7 @@ module.exports = function (RED) {
 
     // Retrieve the config node
     this.on('input', function (msg) {
-      puppeteer.launch( { headless: node.headless, slowMo: node.slowMo } )
+      puppeteer.launch( { args: ['--no-sandbox', '--disable-setuid-sandbox'], executablePath: "/usr/bin/chromium-browser", headless: node.headless, slowMo: node.slowMo} )
         .then((browser) => {
           msg.puppeteer = {
             browser
