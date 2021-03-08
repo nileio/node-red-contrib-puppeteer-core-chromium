@@ -1,5 +1,5 @@
 {
-  "name": "node-red-contrib-puppeteer-core",
+  "name": "node-red-contrib-puppeteer-alpine",
   "version": "1.2.0",
   "description": "NodeRED nodes to control a headless chrome with puppeteer",
   "main": "index.js",
@@ -11,13 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/newnoetic/node-red-contrib-puppeteer-core"
+    "url": "https://github.com/newnoetic/node-red-contrib-puppeteer-alpine"
   },
   "keywords": [
     "chrome",
     "browser automation",
     "puppeteer",
-    "node-red"
+    "node-red",
+    "alpine",
+    "docker"
   ],
   "node-red": {
     "nodes": {

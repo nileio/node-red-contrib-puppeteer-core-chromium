@@ -1,4 +1,4 @@
-# node-red-contrib-puppeteer-core
+# node-red-contrib-puppeteer-alpine
 
 > Forked from node-red-contrib-puppeteer-new
 
