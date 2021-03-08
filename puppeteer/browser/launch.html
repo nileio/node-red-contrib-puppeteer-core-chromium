@@ -5,7 +5,8 @@
       defaults: {
         name: { value: ''},
         headless: { value: true, require: true },
-        slowMo: { value: undefined }
+        slowMo: { value: undefined },
+        executablePath: { value: '' }
       },
       inputs:1,
       outputs:1,
@@ -32,6 +33,10 @@
     <div class="form-row">
           <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
           <input type="text" id="node-input-name" style="width:70%;" placeholder="Name" />
+    </div>
+    <div class="form-row">
+          <label for="node-input-executablePath"><i class="fa fa-tag"></i> Executable Path</label>
+          <input type="text" id="node-input-executablePath" style="width:70%;" placeholder="/usr/bin/chromium" />
     </div>
 </script>
 
