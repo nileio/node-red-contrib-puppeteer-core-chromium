@@ -1,8 +1,8 @@
 # node-red-contrib-puppeteer-core
 
-# Forked from node-red-contrib-puppeteer-new
+> Forked from node-red-contrib-puppeteer-new
 
-Fork reason, chromium dependency issues in alpine when installed via npm. Solution: use `puppeteer-core` and use `apk` to install chromium
+Fork reason, chromium dependency issues in alpine when installed via npm. Solution: use `puppeteer-core` and use `apk` to install chromium. Then launch chromium with `--no-sandbox`.
 
 ```
 # Dockerfile example
@@ -19,6 +19,8 @@ RUN set -x \
     && rm -rf /var/cache/apk/* /root/.node-gyp /usr/share/man /tmp/* \
     && echo
 ```
+
+# Original README
 
 NodeRED nodes to control a headless chrome with puppeteer
 
