@@ -1,11 +1,25 @@
-# node-red-contrib-puppeteer-alpine
+# node-red-contrib-puppeteer-core-chromium
 
-> Forked from node-red-contrib-puppeteer-new
+> NodeRED nodes to control a headless chrome/chromium browswer with puppeteer.
 
-Fork reason, chromium dependency issues in alpine when installed via npm. Solution: use `puppeteer-core` and use `apk` to install chromium. Then launch chromium with `--no-sandbox`.
+## Get started
+
+You'll usually use nodes in this order:
 
 ```
-# Dockerfile example
+launch -> new page -> goto -> selector/click/screenshot/etc
+```
+
+You can specify the location of your chrome/chromium browser in `launch` node.
+
+*To learn how to use puppeteer, see it's [documentation](https://pptr.dev/).*
+
+-----
+
+## Using with alpine docker
+
+```
+# Dockerfile
 
 RUN set -x \
     && apk update \
@@ -19,12 +33,3 @@ RUN set -x \
     && rm -rf /var/cache/apk/* /root/.node-gyp /usr/share/man /tmp/* \
     && echo
 ```
-
-# Original README
-
-NodeRED nodes to control a headless chrome with puppeteer
-
-## Documentation
-
-This project is in a very early stage, so nothing is documentated now. To get a raw idea you can have a look to the puppeteer documentation https://github.com/GoogleChrome/puppeteer/blob/v1.1.1/docs/api.md
-
