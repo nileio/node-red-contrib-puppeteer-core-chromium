@@ -7,7 +7,7 @@ module.exports = function (RED) {
       
       // Retrieve the config node
       this.on('input', function (msg) {
-        msg.puppeteer.page.$(node.selector, node.function)
+        msg.puppeteer.page.$eval(node.selector, node.function)
           .then((result) => {
             msg.payload = result
             node.send(msg) 
