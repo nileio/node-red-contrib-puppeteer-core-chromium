@@ -2,6 +2,7 @@ module.exports = function (RED) {
     function PuppeteerPageEval (config) {
       RED.nodes.createNode(this, config)
       this.selector = config.selector
+      this.function = eval(config.function)
       var node = this
       
       // Retrieve the config node
