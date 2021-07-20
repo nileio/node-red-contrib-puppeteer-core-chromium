@@ -6,7 +6,8 @@ module.exports = function (RED) {
     
     // Retrieve the config node
     this.on('input', function (msg) {
-      msg.puppeteer.page.goto(node.url)
+      const goToUrl = node.url || msg.payload
+      msg.puppeteer.page.goto(goToUrl)
         .then((page) => {
           node.send(msg) 
         })  
