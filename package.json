@@ -1,6 +1,6 @@
 {
-  "name": "node-red-contrib-puppeteer-core-chromium",
-  "version": "1.2.1",
+  "name": "node-red-contrib-puppeteer-alpine",
+  "version": "1.2.3",
   "description": "NodeRED nodes to control a headless chrome/chromium browswer with puppeteer.",
   "main": "index.js",
   "scripts": {},
@@ -35,7 +35,8 @@
       "puppeteer-page-close": "puppeteer/page/close.js",
       "puppeteer-page-keyboard-type": "puppeteer/page/keyboard/type.js",
       "puppeteer-page-keyboard-press": "puppeteer/page/keyboard/press.js",
-      "puppeteer-page-querySelector": "puppeteer/page/querySelector.js"
+      "puppeteer-page-querySelector": "puppeteer/page/querySelector.js",
+      "puppeteer-page-eval": "puppeteer/page/eval.js"
     }
   }
 }
