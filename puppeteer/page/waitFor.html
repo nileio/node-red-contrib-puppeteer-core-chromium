@@ -1,31 +1,41 @@
 <script type="text/javascript">
-    RED.nodes.registerType('puppeteer-page-waitFor', {
-      category: 'puppeteerpage',
-      color: '#8BBDD9',
-      defaults: {
-        name: { value: '' },
-        selector:  { value: '', required: true }
-      },
-      inputs:1,
-      outputs:1,
-      icon: "fa-file-code-o.png",
-      label: function() {
-          return this.name || "waitFor";
-      },
-      paletteLabel: "waitFor"
-    });
+  RED.nodes.registerType('puppeteer-page-waitFor', {
+    category: 'puppeteerpage',
+    color: '#8BBDD9',
+    defaults: {
+      name: { value: '' },
+      selector: { value: '', required: true, validate: RED.validators.typedInput("selectorType") },
+      selectorType: { value: "str", required: false },
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: "fa-file-code-o.png",
+    label: function () {
+      return this.name || "waitFor";
+    },
+    paletteLabel: "waitFor",
+    oneditprepare: function () {
+      var node = this;
+      $("#node-input-selector").typedInput({
+        typeField: $("#node-input-selectorType"),
+        default: "str",
+        types: ["str", "msg", "jsonata"]
+      });
+    }
+  });
 </script>
 
-<script type="text/x-red" data-template-name="puppeteer-page-waitFor">
+<script type="text/html" data-template-name="puppeteer-page-waitFor">
   <div class="form-row">
-    <label for="node-input-selector">selector</label>
-    <input id="node-input-selector"></input>
+    <label for="node-input-selector"><i class="fa fa-filter"></i><span>Selector</span></label>
+    <input type="text" id="node-input-selector" style="width: 70%" placeholder="h1">
+    <input type="hidden" id="node-input-selectorType">
   </div>
   <div class="form-row">
-      <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
-      <input type="text" id="node-input-name" style="width:70%;" placeholder="Name" />
+    <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+    <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
   </div>
 </script>
 
-<script type="text/x-red" data-help-name="puppeteer-page-waitFor">
+<script type="text/html" data-help-name="puppeteer-page-waitFor">
 </script>

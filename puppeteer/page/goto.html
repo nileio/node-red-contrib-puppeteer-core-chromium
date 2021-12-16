@@ -1,31 +1,49 @@
 <script type="text/javascript">
-    RED.nodes.registerType('puppeteer-page-goto', {
-      category: 'puppeteerpage',
-      color: '#8BBDD9',
-      defaults: {
-        name: { value: '' },
-        url:  { value: '' }
-      },
-      inputs:1,
-      outputs:1,
-      icon: "fa-file-code-o.png",
-      label: function() {
-          return this.name || "goto";
-      },
-      paletteLabel: "goto"
-    });
+  RED.nodes.registerType('puppeteer-page-goto', {
+    category: 'puppeteerpage',
+    color: '#8BBDD9',
+    defaults: {
+      name: { value: '' },
+      url: { value: '', required: true, validate: RED.validators.typedInput("urlType") },
+      urlType: { value: "str", required: true }
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: "fa-file-code-o.png",
+    label: function () {
+      return this.name || "goto";
+    },
+    paletteLabel: "goto",
+    oneditprepare: function () {
+      var node = this;
+      $("#node-input-url").typedInput({
+        typeField: $("#node-input-urlType"),
+        default: "str",
+        types: ["str", "msg", "jsonata"]
+      });
+    }
+  });
 </script>
 
-<script type="text/x-red" data-template-name="puppeteer-page-goto">
+<script type="text/html" data-template-name="puppeteer-page-goto">
+
   <div class="form-row">
-    <label for="node-input-url">url</label>
-    <input id="node-input-url"></input>
+    <label for="node-input-url"><i class="fa fa-globe"></i><span> Url</span></label>
+    <input type="text" id="node-input-url" style="width: 70%" placeholder="https://www.google.com">
+    <input type="hidden" id="node-input-urlType">
   </div>
+
   <div class="form-row">
-      <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
-      <input type="text" id="node-input-name" style="width:70%;" placeholder="Name" />
+    <label for="node-input-name"><i class="fa fa-tag"></i><span data-i18n="node-red:common.label.name"></span></label>
+    <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
   </div>
 </script>
 
-<script type="text/x-red" data-help-name="puppeteer-page-goto">
+<script type="text/html" data-help-name="puppeteer-page-goto">
+      <p>navigates to a url</p>
+      <h3>Inputs</h3>
+      <dl class="message-properties">
+        <dt>Url<span class="property-type">string</span></dt>
+        <dd> a valid address</dd>
+      </dl>
 </script>

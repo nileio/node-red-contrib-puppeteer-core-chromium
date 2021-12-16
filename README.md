@@ -12,24 +12,12 @@ launch -> new page -> goto -> selector/click/screenshot/etc
 
 You can specify the location of your chrome/chromium browser in `launch` node.
 
-*To learn how to use puppeteer, see it's [documentation](https://pptr.dev/).*
+_To learn how to use puppeteer, see it's [documentation](https://pptr.dev/)._
 
------
+---
 
-## Using with alpine docker
+## Installation Instructions
 
-```
-# Dockerfile
-
-RUN set -x \
-    && apk update \
-    && apk upgrade \
-    && apk add --no-cache \
-    ttf-freefont \
-    chromium \
-    # Cleanup
-    && apk del --no-cache make gcc g++ python binutils-gold gnupg libstdc++ \
-    && rm -rf /usr/include \
-    && rm -rf /var/cache/apk/* /root/.node-gyp /usr/share/man /tmp/* \
-    && echo
+```bash
+npm install https://github.com/nileio/node-red-contrib-puppeteer-core-chromium --save
 ```

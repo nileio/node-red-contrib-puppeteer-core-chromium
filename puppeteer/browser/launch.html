@@ -1,24 +1,24 @@
 <script type="text/javascript">
     RED.nodes.registerType('puppeteer-browser-launch', {
-      category: 'puppeteerbrowser',
-      color: '#8BBDD9',
-      defaults: {
-        name: { value: ''},
-        headless: { value: true, require: true },
-        slowMo: { value: undefined },
-        executablePath: { value: '' }
-      },
-      inputs:1,
-      outputs:1,
-      icon: "fa-chrome.png",
-      label: function() {
-          return this.name || "launch";
-      },
-      paletteLabel: "launch"
+        category: 'puppeteerbrowser',
+        color: '#8BBDD9',
+        defaults: {
+            name: { value: '' },
+            headless: { value: true, require: true },
+            slowMo: { value: undefined },
+            executablePath: { value: '' }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "fa-chrome.png",
+        label: function () {
+            return this.name || "launch";
+        },
+        paletteLabel: "launch"
     });
 </script>
 
-<script type="text/x-red" data-template-name="puppeteer-browser-launch">
+<script type="text/html" data-template-name="puppeteer-browser-launch">
     <div class="form-row">
         <label for="node-input-headless"><i class="fa fa-cogs"></i> Run Headless</label>
         <select type="boolean" id="node-input-headless" style="width:70%;">
@@ -31,13 +31,15 @@
         <input type="text" id="node-input-slowMo" style="width:70%;" placeholder="0" />
     </div>
     <div class="form-row">
-          <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
-          <input type="text" id="node-input-name" style="width:70%;" placeholder="Name" />
-    </div>
-    <div class="form-row">
           <label for="node-input-executablePath"><i class="fa fa-tag"></i> Executable Path</label>
           <input type="text" id="node-input-executablePath" style="width:70%;" placeholder="/usr/bin/chromium" />
     </div>
+
+<div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+    <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+</div>
+
 </script>
 
 <script type="text/x-red" data-help-name="puppeteer-browser-launch">
