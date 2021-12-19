@@ -10,7 +10,7 @@ module.exports = function (RED) {
       let goToUrl = node.url;
       if (node.urlType === "msg") goToUrl = RED.util.getMessageProperty(msg, node.url);
       if (node.urlType === "jsonata") goToUrl = RED.util.evaluateJSONataExpression(RED.util.prepareJSONataExpression(node.url, node), msg);
-      node.warn(`puppeteer goto url ${goToUrl}`);
+      node.warn(`puppeteer goto url: ${goToUrl}`);
       msg.puppeteer.page
         .goto(goToUrl)
         .then(() => {

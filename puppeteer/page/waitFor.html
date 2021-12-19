@@ -6,6 +6,8 @@
       name: { value: '' },
       selector: { value: '', required: true, validate: RED.validators.typedInput("selectorType") },
       selectorType: { value: "str", required: false },
+      timeout: { value: "30", required: true, validate: function (v) { return RED.validators.number(v) && (v >= 0); } },
+      timeoutUnits: { value: "seconds" },
     },
     inputs: 1,
     outputs: 1,
@@ -21,21 +23,39 @@
         default: "str",
         types: ["str", "msg", "jsonata"]
       });
+      $("#node-input-timeout").spinner({ min: 0 });
+      if (!this.timeoutUnits) {
+        $("#node-input-timeoutUnits option").filter(function () {
+          return $(this).val() == 'seconds';
+        }).attr('selected', true);
+      }
     }
   });
 </script>
 
 <script type="text/html" data-template-name="puppeteer-page-waitFor">
   <div class="form-row">
-    <label for="node-input-selector"><i class="fa fa-filter"></i><span>Selector</span></label>
+    <label for="node-input-selector"><i class="fa fa-filter"></i><span> Selector</span></label>
     <input type="text" id="node-input-selector" style="width: 70%" placeholder="h1">
     <input type="hidden" id="node-input-selectorType">
   </div>
   <div class="form-row">
+    <label for="node-input-timeout"><i class="fa fa-clock-o"></i><span> Timeout</span></label>
+    <input type="text" id="node-input-timeout" style="text-align:end; width:50px !important">
+    <select id="node-input-timeoutUnits" style="width:200px !important">
+      <option value="milliseconds">Milliseconds</option>
+      <option value="seconds">Seconds</option>
+      <option value="minutes">Minutes</option>
+    </select>
+  </div>
+  <br />
+  <div class="form-row">
     <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
     <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
   </div>
+  <div class="form-tips" id="node-tip">timeout defaults to 30 seconds. providing a value of 0 disables timeout.</span></div>
 </script>
+
 
 <script type="text/html" data-help-name="puppeteer-page-waitFor">
 </script>
