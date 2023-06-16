@@ -9,3 +9,7 @@ renamed the package back to original name node-red-contrib-puppeteer-core-chromi
 ### Enhancements - click
 
 added ability to use a `msg` property for selector.
+
+## 1.2.5
+
+fixing of labels

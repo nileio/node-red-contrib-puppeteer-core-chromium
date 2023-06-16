@@ -1,19 +1,22 @@
 <script type="text/javascript">
-    RED.nodes.registerType('puppeteer-page-focus', {
-      category: 'puppeteerpage',
-      color: '#8BBDD9',
-      defaults: {
-        name: { value: '' },
-        selector:  { value: '', required: true }
-      },
-      inputs:1,
-      outputs:1,
-      icon: "fa-file-code-o.png",
-      label: function() {
-          return this.name || "focus";
-      },
-      paletteLabel: "focus"
-    });
+  RED.nodes.registerType('puppeteer-page-focus', {
+    category: 'puppeteerpage',
+    color: '#8BBDD9',
+    defaults: {
+      name: { value: '' },
+      selector: { value: '', required: true }
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: "fa-file-code-o.png",
+    label: function () {
+      return this.name || "focus";
+    },
+    paletteLabel: "focus",
+    oneditprepare: function () {
+      $("#node-input-name").val(this.name)
+    }
+  });
 </script>
 
 <script type="text/x-red" data-template-name="puppeteer-page-focus">

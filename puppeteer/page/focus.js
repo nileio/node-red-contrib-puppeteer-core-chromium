@@ -1,22 +1,20 @@
 module.exports = function (RED) {
-  function PuppeteerPageFocus (config) {
-    RED.nodes.createNode(this, config)
-    this.selector = config.selector
-    var node = this
-    
+  function PuppeteerPageFocus(config) {
+    RED.nodes.createNode(this, config);
+    this.selector = config.selector;
+    let node = this;
+
     // Retrieve the config node
-    this.on('input', function (msg) {
-      msg.puppeteer.page.focus(node.selector)
+    this.on("input", (msg) => {
+      msg.puppeteer.page
+        .focus(node.selector)
         .then(() => {
-          node.send(msg) 
+          node.send(msg);
         })
         .catch((err) => {
-          node.error(err)
-        })
-    })
-    oneditprepare: function oneditprepare() {
-      $("#node-input-name").val(this.name)
-    }
+          node.error(err);
+        });
+    });
   }
-  RED.nodes.registerType('puppeteer-page-focus', PuppeteerPageFocus)
-}
+  RED.nodes.registerType("puppeteer-page-focus", PuppeteerPageFocus);
+};
